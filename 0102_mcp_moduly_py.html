@@ -1,0 +1,726 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Moduly a knižnice &#8212; micropython 1.00 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=2a0ef813"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '0102_mcp_moduly_py';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Nucleo64-STM32L476" href="0104_mcp_mapovanie_L476.html" />
+    <link rel="prev" title="GPIO" href="0200_pyb_gpio.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo_411.png" class="logo__image only-light" alt="micropython 1.00 documentation - Home"/>
+    <script>document.write(`<img src="_static/logo_411.png" class="logo__image only-dark" alt="micropython 1.00 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Úvod</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0010_mcp_uvod.html"><font color="navy"> MicroPython </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0100_mcp_instalacia.html"><font color="navy"> Inštalácia </font></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Periférie</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0200_pyb_gpio.html"><font color="navy"> GPIO </font></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Prilohy</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> <b> Moduly a knižnice </b></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0104_mcp_mapovanie_L476.html"><font color="navy"> Nucleo64-STM32L476 </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0105_mcp_mapovanie_L432.html"><font color="navy"> Nucleo32-STM32L432 </font></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/0102_mcp_moduly_py.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><font color='navy'> <b> Moduly a knižnice </b></font></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modul-v-micropython"><font color="teal"> <b> Modul v MicroPython</b></font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nahratie-suboru-z-prostredia-terminalu"><font color="purple"> <b> Nahratie súboru z prostredia terminálu </b></font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nahratie-suboru-online"><font color="purple"> <b> Nahratie súboru online </b></font></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modul-skompilovany-do-bytecode"><font color="teal"> <b> Modul skompilovaný do bytecode </b></font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modul-implementovany-v-c"><font color="teal"> <b> Modul implementovaný v C </b></font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rozhranie-modulu"><font color="purple"> <b> Rozhranie modulu </b></font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generovanie-skeletonu"><font color="purple"> <b> Generovanie skeletonu </b></font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacia-modulu"><font color="purple"> <b> Implementácia modulu </b></font></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="moduly-a-kniznice">
+<h1><font color='navy'> <b> Moduly a knižnice </b></font><a class="headerlink" href="#moduly-a-kniznice" title="Link to this heading">#</a></h1>
+<p>Časti kódu a moduly môžeme v <strong>MicroPython-e</strong> používať nasledujúcimi spôsobmi</p>
+<ul class="simple">
+<li><p>priamo ako kód v ineratktívnom móde alebo nahratý priamo do prostredia v zdrojovom kóde</p></li>
+<li><p>pridaný ako knižnica v skompilovanom kóde Pythonu ako bytecode do firmware pre cielovú platformu</p></li>
+<li><p>vytvorený ako knižnica v programovacom jazyku C a skompilovaný ako modul pri generovaní firmware</p></li>
+</ul>
+<section id="modul-v-micropython">
+<h2><font color='teal'> <b> Modul v MicroPython</b></font><a class="headerlink" href="#modul-v-micropython" title="Link to this heading">#</a></h2>
+<p>Je uložený v priamo v pamäti MCU (flash) v prostredí <strong>MicroPython</strong>-u, t.j. zaberá najviac miesta v pamäti.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kniznica pre LM92</span>
+<span class="k">def</span> <span class="nf">read_LM92_TR</span><span class="p">(</span><span class="n">ic</span><span class="p">,</span> <span class="n">addr</span><span class="p">):</span>
+    <span class="n">raw</span> <span class="o">=</span> <span class="n">ic</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># nacitanie 2 byte z registra 0 </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="n">raw</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>      <span class="c1"># konverzia 16 bit format</span>
+    <span class="n">td</span> <span class="o">=</span> <span class="n">data</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span>                     <span class="c1"># 2&#39;compl b15-b3 temperature</span>
+    <span class="n">TEMP</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">td</span> <span class="o">&amp;</span> <span class="mh">0x1000</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">td</span> <span class="o">&amp;</span> <span class="mh">0xFFF</span><span class="p">))</span><span class="o">*</span> <span class="mf">0.0625</span>       
+    <span class="n">L</span> <span class="o">=</span> <span class="n">data</span> <span class="o">&amp;</span> <span class="mh">0x01</span>                    <span class="c1"># T_LOW  -&gt; H, TEMP &lt; 10 deg</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span> <span class="o">&amp;</span> <span class="mh">0x02</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span>             <span class="c1"># T_HIGH -&gt; H  TEMP &gt; 64 deg</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span> <span class="o">&amp;</span> <span class="mh">0x04</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span>             <span class="c1"># T_CRIT -&gt; H  TEMP &gt; 80 deg</span>
+    <span class="k">return</span> <span class="n">TEMP</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">L</span>
+</pre></div>
+</div>
+<p>a jeho použitie v interaktívnom móde z konzoly terminálu</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>       <span class="c1"># I2C - port 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">read_LM92_TR</span><span class="p">(</span><span class="n">i2c</span><span class="p">,</span> <span class="mi">75</span><span class="p">))</span>
+</pre></div>
+</div>
+<section id="nahratie-suboru-z-prostredia-terminalu">
+<h3><font color='purple'> <b> Nahratie súboru z prostredia terminálu </b></font><a class="headerlink" href="#nahratie-suboru-z-prostredia-terminalu" title="Link to this heading">#</a></h3>
+<p>V <em>picocom</em> termináli pre skopírovanie programu do prostredia môžeme použiť skratky <em>CTRL+E</em> a <em>CTRL+D</em>.</p>
+</section>
+<section id="nahratie-suboru-online">
+<h3><font color='purple'> <b> Nahratie súboru online </b></font><a class="headerlink" href="#nahratie-suboru-online" title="Link to this heading">#</a></h3>
+<p>Interný filesystém je dostupný aj mimo prostredia MicroPython-u, pomocou utility <em>./tools/pyboard.py</em> (adresár v distribúcii z github-u) je možné do neho ukladať, mazať súbory a vyvárať adresárovú štruktúru.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>usage: pyboard.py [-h] [--device DEVICE] [-b BAUDRATE] [-u USER] [-p PASSWORD]
+                  [-c COMMAND] [-w WAIT] [--follow] [-f]
+                  [files [files ...]]
+</pre></div>
+</div>
+<p>Doplňujúce argumenty pre <em>-f (–filesystem)</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ls
+ls ./adresar
+cp ./file ./
+rm ./file
+rmdir addr
+mkdir addr
+cat ./subor   vypis suboru na terminal resp
+cat./subor &gt; lokalny.txt
+</pre></div>
+</div>
+<p>Príklad</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python pyboard.py -f ls
+python pyboard.py -f cp ./test.py :
+</pre></div>
+</div>
+<p>Ak sa prepíšeme resp. upravíme súbor <em>main.py</em> v koreňovom adresári tak aby obsahoval vykonateľný kód, tento sa po resete automaticky spustí. Spustenie nahratého kódu je jedmoducho možé aj priamo</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> python pyboard.py test.py
+</pre></div>
+</div>
+</section>
+</section>
+<section id="modul-skompilovany-do-bytecode">
+<h2><font color='teal'> <b> Modul skompilovaný do bytecode </b></font><a class="headerlink" href="#modul-skompilovany-do-bytecode" title="Link to this heading">#</a></h2>
+<p>Aby nebolo potrebné po resete mikrokontroléra opakovane nehrávať časti odladeného kódu do prostredia MicroPython-u, tento umožňuje pridanie nového kódu (frozen module) ako knižnice, ktorá sa stane súčasťou firmware. Celý postup je veľmi jednoduchý a spočíva v uložení súboru s kódom knižnice v Pythone do adresáru vytvoreného adresáru <em>.ports/stm32/modules</em> a následnom skompilovaní firmware a jeho nahratí do mikrokontroléra. Knižnica je dostupná pomocou štandardneho príkazu <em>import</em>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>micropython
+ |
+ +--ports
+ |    |
+ |    +--stm32
+...   |    |
+     ...   +--my_modules             &lt;--- vytvoreny adresar
+           |    |
+           |    +--manifest.py       &lt;--- popis konfiguracie modulu
+           |    |
+           |    +--test              &lt;--- adresar s modulom
+           |    |    |
+          ...  ...   +-- demo.py     &lt;--- kod naseho modulu
+</pre></div>
+</div>
+<p>Modul môže pozostávať z jedného alebo viacerých súborov, pred kompiláciou potrebujeme vytvortiť súbor <em>manifest.py</em> do ktorého konfiguráciu modulu. Dokumentácia k formátu <em>manifest</em> súboru je dostupná online - <a class="reference external" href="https://docs.micropython.org/en/latest/reference/manifest.html">link</a>.</p>
+<p>Pre našu konfiguráciu bude mať súbor <em>manifest.py</em> tvar</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">package</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Firmware skompilujeme štandardným postupom, len musíme naviac zadefinovať premennú <strong>FROZEN_MANIFEST</strong> Prekročenie rozsahu pamäte Flash má za následok chybu kompilácie.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>adresar ./ports/stm32/, kompilacia pre Nucleo32 STM32L432KC
+
+make BOARD=NUCLEO_L432KC clean
+make BOARD=NUCLEO_L432KC FROZEN_MANIFEST=./my_modules/manifest.py
+</pre></div>
+</div>
+<p>Po kompilácii a nahratí firmware do MCU je modul dostupný cez <em>import test.demo</em>. Kontrolu modulu prevedieme pomocou príkazu <em>dir()</em></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">test.demo</span> <span class="k">as</span> <span class="nn">dt</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">dir</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;__class__&#39;</span><span class="p">,</span> <span class="s1">&#39;__name__&#39;</span><span class="p">,</span> <span class="s1">&#39;__dict__&#39;</span><span class="p">,</span> <span class="s1">&#39;__file__&#39;</span><span class="p">,</span> <span class="s1">&#39;machine&#39;</span><span class="p">,</span> <span class="s1">&#39;read_LM92_TR&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> 
+</pre></div>
+</div>
+<p>Pri mikrokontroléroch s väčšou FLASH pamäťou je možné jej voľnú časť využiť ako pamäťové médium mapované ako file systém. Knižnica <em>os</em> poskytuje základné funkcie pre vytváranie adresárov a manipuláciu so súbormi.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; import os
+&gt;&gt;&gt; help(os)
+object &lt;module &#39;uos&#39;&gt; is of type module
+  __name__ -- uos
+  uname    -- &lt;function&gt;
+  chdir    -- &lt;function&gt;
+  getcwd   -- &lt;function&gt;
+  ilistdir -- &lt;function&gt;
+  listdir  -- &lt;function&gt;
+  mkdir    -- &lt;function&gt;
+  ...
+  mount    -- &lt;function&gt;
+  umount   -- &lt;function&gt;
+</pre></div>
+</div>
+</section>
+<section id="modul-implementovany-v-c">
+<h2><font color='teal'> <b> Modul implementovaný v C </b></font><a class="headerlink" href="#modul-implementovany-v-c" title="Link to this heading">#</a></h2>
+<p>Pri vývoji neštandardných periférií nemusia štandardné drivery, ktoré sú súčasťou MicroPython-u, vyhovovať a môže vzniknúť požiadavka na nízkoúrovňovú obsluhu periférie. Podobne ako pri štandardnom Pythone, je možné aj MocroPython rozširovať o natívne moduly napísané v C/C++ a ktoré môžu využívať aj systémové knižnice pre obsluhu periférií mikrokontroléra. Pre vytvorenie modulu musíme rovnako ako v štandardnom Pythone vytvoriť rozhranie medzi natívnym modulom a jeho reprezentáciou v Pythone.</p>
+<p>Pretože rozhranie k natívnym modulom je v značnej miere štandardizované, pre štandardný Python existujú generátory kódu, napr. SWIG, ktoré vygenerujú potrebné rozhranie na základe zdrojového kódu modulu. Pri MicroPythone sa používa opačný postup, môžeme použiť generátor rozhrania <em>ustubby</em>, experimentálne implementácia sú napr. v <a class="reference external" href="https://github.com/SummerGift/micropython-ustubby">link</a>, ktorý vytvorí stub pozostávajúci z makier v C na základe deklarácie funkcie v Pythone.</p>
+<section id="rozhranie-modulu">
+<h3><font color='purple'> <b> Rozhranie modulu </b></font><a class="headerlink" href="#rozhranie-modulu" title="Link to this heading">#</a></h3>
+<p>Vytvorenie rozhrania modulu je možné pomocou online <a class="reference external" href="https://mpy-c-gen.oliverrobson.tech/">generátora</a> zadaním mena funkcie, argumentov a návratovej hodnoty.</p>
+<p>Alternatívnym postupom je vygenerovanie rozhrania pomocou generátora <em>ustubby</em> priamo z deklarácie funkcie v Pythone pomocou generátora. Inštalácia <em>ustubby</em> je možná priamo z repozitárov</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install ustubby
+</pre></div>
+</div>
+<p>Vytvoríme jednoduchý modul pre ST32L476, ktorý pozostáva z funkcie, ktorá prepína LED stanovený počet krát a s nastaviteľnou dĺžkou intervalu.</p>
+<p>Deklarácia funkcií v Pythone pre vygenerovanie rozhrania má tvar:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Subor blink.py</span>
+<span class="k">def</span> <span class="nf">blink</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">delay</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Blikanie LED</span>
+<span class="sd">    :param n: pocet bliknuti</span>
+<span class="sd">    :param b: delay</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="generovanie-skeletonu">
+<h3><font color='purple'> <b> Generovanie skeletonu </b></font><a class="headerlink" href="#generovanie-skeletonu" title="Link to this heading">#</a></h3>
+<p>Na základe tejto deklarácie vygenerujeme pomocou <em>ustubby</em>, do ktorého doplníme implementáciu príslušnej funkcie. Pre vygenerovanie môžeme použiť postup uvedený v návode ku generátoru alebo môžeme použiť nasledujúci jednoduchý skript.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Subor gen_stub.py </span>
+<span class="c1"># skript pre generovanie stubb pre moduly mikropythonu podla</span>
+<span class="c1"># https://github.com/pazzarpj/micropython-ustubby</span>
+<span class="kn">import</span> <span class="nn">ustubby</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pouzitie: python gen_stub.py input.py &gt; output.c&quot;</span><span class="p">)</span>
+    <span class="n">exit</span><span class="p">()</span>
+    
+<span class="n">md</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">stub</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="n">md</span><span class="p">)</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">ustubby</span><span class="o">.</span><span class="n">stub_module</span><span class="p">(</span><span class="n">stub</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="implementacia-modulu">
+<h3><font color='purple'> <b> Implementácia modulu </b></font><a class="headerlink" href="#implementacia-modulu" title="Link to this heading">#</a></h3>
+<p>Implementáciu vlastného kodu je možné vytvoriť pomocou HAL alebo LL, príklad časti kódu s implementáciou využívajúcou low-level knižnice STM32 je nižšie</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;py/runtime.h&quot;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;stm32l4xx.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;stm32l4xx_ll_cortex.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;stm32l4xx_ll_gpio.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;stm32l4xx_ll_system.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;stm32l4xx_ll_utils.h&quot;</span>
+
+<span class="k">static</span><span class="w"> </span><span class="n">mp_obj_t</span><span class="w"> </span><span class="nf">blink</span><span class="p">(</span><span class="n">mp_obj_t</span><span class="w"> </span><span class="n">n_obj</span><span class="p">,</span><span class="w"> </span><span class="n">mp_obj_t</span><span class="w"> </span><span class="n">delay_obj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">mp_obj_get_int</span><span class="p">(</span><span class="n">n_obj</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">delay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mp_obj_get_int</span><span class="p">(</span><span class="n">delay_obj</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+<span class="w">        </span><span class="n">LL_mDelay</span><span class="p">(</span><span class="n">delay</span><span class="p">);</span>
+<span class="w">        </span><span class="n">LL_GPIO_TogglePin</span><span class="p">(</span><span class="n">GPIOA</span><span class="p">,</span><span class="w"> </span><span class="n">LL_GPIO_PIN_5</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">mp_const_none</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Vytvorenie Python referencie na funkciu</span>
+<span class="c1">// blink_obj - meno referencie</span>
+<span class="c1">// blink     - meno funkcie - z definicie</span>
+<span class="k">static</span><span class="w"> </span><span class="n">MP_DEFINE_CONST_FUN_OBJ_2</span><span class="p">(</span><span class="n">blink_obj</span><span class="p">,</span><span class="w"> </span><span class="n">blink</span><span class="p">);</span>
+
+<span class="c1">//======================================================================</span>
+<span class="c1">// tabulka mapovania modulu</span>
+<span class="c1">// MP_ROM_QSTR(MP_QSTR_demo) - meno modulu (adresaru s implementaciou modulu)</span>
+<span class="c1">// MP_ROM_PTR(&amp;blink_obj)    - referencia na funkciu modulu</span>
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">mp_rom_map_elem_t</span><span class="w"> </span><span class="n">blink_module_globals_table</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">MP_ROM_QSTR</span><span class="p">(</span><span class="n">MP_QSTR___name__</span><span class="p">),</span><span class="w"> </span><span class="n">MP_ROM_QSTR</span><span class="p">(</span><span class="n">MP_QSTR_demo</span><span class="p">)</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">MP_ROM_QSTR</span><span class="p">(</span><span class="n">MP_QSTR_blink</span><span class="p">),</span><span class="w">    </span><span class="n">MP_ROM_PTR</span><span class="p">(</span><span class="o">&amp;</span><span class="n">blink_obj</span><span class="p">)</span><span class="w"> </span><span class="p">},</span>
+<span class="p">};</span>
+
+<span class="c1">// referncia na tabulku</span>
+<span class="c1">// blink_module_globals_table - zaradenie tabulky do slovnika modulov</span>
+<span class="k">static</span><span class="w"> </span><span class="n">MP_DEFINE_CONST_DICT</span><span class="p">(</span><span class="n">blink_module_globals</span><span class="p">,</span><span class="w"> </span><span class="n">blink_module_globals_table</span><span class="p">);</span>
+
+<span class="c1">// definovanie objektu modulu</span>
+<span class="k">const</span><span class="w"> </span><span class="n">mp_obj_module_t</span><span class="w"> </span><span class="n">blink_cmodule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">.</span><span class="n">base</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mp_type_module</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">.</span><span class="n">globals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">mp_obj_dict_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">blink_module_globals</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="c1">// registracia modulu</span>
+<span class="n">MP_REGISTER_MODULE</span><span class="p">(</span><span class="n">MP_QSTR_demo</span><span class="p">,</span><span class="w"> </span><span class="n">blink_cmodule</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Štruktúra adresárov má potom tvar</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>my_project/  
+    |
+    +-- modules/               &lt;-- adresar modulov 
+    |   +--demo/
+    |       +--blink.c         &lt;-- vygenerovany a doplneny zdrojovy kod
+    |       +--micropython.mk  &lt;-- konfiguracia modulu
+    |
+    +-- micropython/           &lt;-- originalny MicroPython
+        +--ports/              &lt;-- porty pre platformy     
+       ...  +--stm32/          &lt;-- adresar pre kompilaciu firmware
+          ...
+</pre></div>
+</div>
+<p>Kompilácia s použitím HAL knižníc nevyžaduje žiadne úpravy, pri kompilácii implementácie modulov s LL knižnicami musíme upraviť ./stm32/Makefile</p>
+<ul class="simple">
+<li><p>doplniť inicializáciu príznaku USE_FULL_LL_DRIVER pre sprístupnenie LL knižníc</p></li>
+<li><p>doplniť kompiláciu LL knižníc</p></li>
+</ul>
+<p>V sekcii CFLAGS doplniť (riadok 117)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>CFLAGS = $(INC) -Wall ...  
+...
+CFLAGS += -DUSE_FULL_LL_DRIVER       &lt;- doplneny flag
+</pre></div>
+</div>
+<p>V sekcii HAL_SRC doplniť (riadok 326)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>HAL_SRC = $(addprefix $(HAL_DIR)/Src/stm32$(MCU_SERIES)xx_,\
+    hal.c \
+    ...
+    hal_uart.c \
+    ll_gpio.c \                     &lt;- doplnene LL drivery bez prefixu
+    ...
+    )
+</pre></div>
+</div>
+<p>Pre kompiláciu modulu ešte musíme v adresári modulu vytvoriť súbor <em>micropython.mk</em>, v ktorom je definovaná štruktúra modulu, ktorý môže pozostávať aj z viacerých súborov.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Subor micropython.mk
+BLINK_MOD_DIR := $(USERMOD_DIR)
+
+# Add all C files to SRC_USERMOD.
+SRC_USERMOD += $(BLINK_MOD_DIR)/blink.c
+</pre></div>
+</div>
+<p>Spustenie kompilácie je potom rovnaké ak v predchádzajúcom prípade, v adresari <em>./ports/stm32/</em> spustíme kompiláciu firmware</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>make BOARD=NUCLEO_L432KC USER_C_MODULES=../../../modules 
+</pre></div>
+</div>
+<p>ktorý štandardným postupom zapíšeme do pamäte mikrokontroléra. Použitie modulu v MikroPythone je rovnaké ako akejkoľvek inej knižnice</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">demo</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">demo</span><span class="o">.</span><span class="n">blink</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="0200_pyb_gpio.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><font color='navy'> GPIO </font></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="0104_mcp_mapovanie_L476.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><font color='navy'> Nucleo64-STM32L476 </font></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modul-v-micropython"><font color="teal"> <b> Modul v MicroPython</b></font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nahratie-suboru-z-prostredia-terminalu"><font color="purple"> <b> Nahratie súboru z prostredia terminálu </b></font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nahratie-suboru-online"><font color="purple"> <b> Nahratie súboru online </b></font></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modul-skompilovany-do-bytecode"><font color="teal"> <b> Modul skompilovaný do bytecode </b></font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modul-implementovany-v-c"><font color="teal"> <b> Modul implementovaný v C </b></font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rozhranie-modulu"><font color="purple"> <b> Rozhranie modulu </b></font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generovanie-skeletonu"><font color="purple"> <b> Generovanie skeletonu </b></font></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacia-modulu"><font color="purple"> <b> Implementácia modulu </b></font></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By pf
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, pf.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

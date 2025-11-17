@@ -1,0 +1,555 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>GPIO &#8212; micropython 1.00 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=2a0ef813"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '0200_pyb_gpio';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Moduly a knižnice" href="0102_mcp_moduly_py.html" />
+    <link rel="prev" title="Inštalácia" href="0100_mcp_instalacia.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo_411.png" class="logo__image only-light" alt="micropython 1.00 documentation - Home"/>
+    <script>document.write(`<img src="_static/logo_411.png" class="logo__image only-dark" alt="micropython 1.00 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Úvod</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0010_mcp_uvod.html"><font color="navy"> MicroPython </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0100_mcp_instalacia.html"><font color="navy"> Inštalácia </font></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Periférie</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><font color="navy"> GPIO </font></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Prilohy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0102_mcp_moduly_py.html"><font color="navy"> <b> Moduly a knižnice </b></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0104_mcp_mapovanie_L476.html"><font color="navy"> Nucleo64-STM32L476 </font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="0105_mcp_mapovanie_L432.html"><font color="navy"> Nucleo32-STM32L432 </font></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/0200_pyb_gpio.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><font color='navy'> GPIO </font></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kniznica-pyb-pin"><font color="teal">  Knižnica pyb.Pin </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trieda-pin"><font color="teal">  Trieda Pin </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#priklady"><font color="teal"> Príklady </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ulohy"><font color="teal"> Úlohy </font></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="gpio">
+<h1><font color='navy'> GPIO </font><a class="headerlink" href="#gpio" title="Link to this heading">#</a></h1>
+<p>Piny púzdra mikrokontroléra sú štandardne pripojené k paralelnému rozhrania procesora označované ako GPIO (General Purpose Input Output). Piny sú sdržené do skupín označených ako porty, v STM32 port pozostáva zo 16 pinov.
+Podľa veľkost púzdra môže mať mikrokontrolér niekoľko portov, pričom na púzdro nemusia byť vyvedené celé porty. Okrem štandardnej funkcie pinu ako GPIO portu majú piny púzdra aj možnosť <em>alternatívnych funkcií</em>, kedy sú pripojené na interné periférie mikrokontroléra, napr. časovače, sériové rozhrania a pod. Pri návrhu komplikovanejších zariadení s mikrokontrolérom vyžaduje pridelenie pinov portom a perifériam dobré premyslenie návrhu.</p>
+<p>Časť pinov GPIO je výrobcom označená ako FT, umožňuje ich použitie pre periférie napájané napätím 5V, aj keď mikrokontrolér je napájaný zo zdroja s napätím 3.3V . Toto značne zjednodušuje pripájanie digitálnych periférii pracujúcich s napätím 5V bez inak potrebného prevodníka úrovní.</p>
+<p>Základná štruktúra interného zapojenia GPIO pri procesoroch STM32 je na obrázku, podrobný popis je v dokumentácii výrobcu <a class="reference download internal" download="" href="_downloads/0d98273e454da55ea1406d37e9047136/AN4899.pdf"><span class="xref download myst">AN4899</span></a>.</p>
+<figure class="align-default" id="gp-03">
+<a class="reference internal image-reference" href="_images/gp_003.png"><img alt="_images/gp_003.png" src="_images/gp_003.png" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 2 </span><span class="caption-text">Interné zapojenie pinu mikrokontroléru.</span><a class="headerlink" href="#gp-03" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Zapojenie každého pinu portu GPIO obsahuje</p>
+<ul class="simple">
+<li><p>ochranné diódy voči krátkodobému prepätiu a ESD</p></li>
+<li><p>rezistory pre prevádzku portu v režime pull-up, pull-down</p></li>
+<li><p>digitálne výstupné obvody s výkonovým budičom</p></li>
+<li><p>digitálne vstupné obvody s komparátorom s hysterézou</p></li>
+<li><p>pre vybrané piny portov multiplexer pre pripojenie analogových periférií</p></li>
+</ul>
+<section id="kniznica-pyb-pin">
+<h2><font color='teal'>  Knižnica pyb.Pin </font><a class="headerlink" href="#kniznica-pyb-pin" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">MicroPython</span></code> obsahuje knižnicu <em>pyb</em> s modulom <strong>Pin</strong>. Riadenie pinov je prostredníctvom ich mena, z dôvodu kompatibility sú piny na kitoch <em>Nucleo</em> označované podľa modulov Arduina ako aj podľa ich pripojenia k vývodom mikrokontroléra. Na obrázku je zapojenie kitu s procesorom STM32L476, zapojenie kitov s iným mikrokontrolérom môže byť odlišné, podrobnosti sú v <a class="reference download internal" download="" href="_downloads/9be632cec1ebb163cd07c7dd5d8cb392/UM1724.pdf"><span class="xref download myst">dokumentácii</span></a>.</p>
+<p>Červeno sú označené piny (dutinky) na konektor Morpheo podľa Arduino, modro sú označené piny podľa ich pripojenie k mikrokontroléru. Konverzná tabulka medzi oboma konektormi pre procesor STM32L476 je v súbore  <a class="reference download internal" download="" href="_downloads/98ca3347ef1a1d708fe7d33abc011b2f/pins_L476.csv"><span class="xref download myst">pins_L476</span></a>.</p>
+<figure class="align-default" id="gp-011">
+<a class="reference internal image-reference" href="_images/nucleo-l476.png"><img alt="_images/nucleo-l476.png" src="_images/nucleo-l476.png" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 3 </span><span class="caption-text">Označenie pinov modulu <em>Nucleo-64</em> s procesorom STM32L476.</span><a class="headerlink" href="#gp-011" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition-poznamka admonition">
+<p class="admonition-title">Poznámka</p>
+<p>V Arduine môže mať jeden pin niekoľko onačení, napríklad pin v Nucleo-64 označený ako <strong>PA5</strong> má v Arduine označenie <strong>D13</strong>, <strong>PA5</strong>, <strong>LED_GREEN</strong>, <strong>LED_ORANGE</strong>, <strong>LED_RED</strong>.</p>
+</div>
+</section>
+<section id="trieda-pin">
+<h2><font color='teal'>  Trieda Pin </font><a class="headerlink" href="#trieda-pin" title="Link to this heading">#</a></h2>
+<p><strong>Inicializácia</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Pin</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">pull</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">PULL_NONE</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alt</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Konštanty pre nastavenie funkcie pinu</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Pin</span><span class="o">.</span><span class="n">IN</span>     <span class="o">-</span> <span class="n">configure</span> <span class="n">the</span> <span class="n">pin</span> <span class="k">for</span> <span class="nb">input</span><span class="p">;</span>
+<span class="n">Pin</span><span class="o">.</span><span class="n">OUT_PP</span> <span class="o">-</span> <span class="n">configure</span> <span class="n">the</span> <span class="n">pin</span> <span class="k">for</span> <span class="n">output</span><span class="p">,</span> <span class="k">with</span> <span class="n">push</span><span class="o">-</span><span class="n">pull</span> <span class="n">control</span><span class="p">;</span>
+<span class="n">Pin</span><span class="o">.</span><span class="n">OUT_OD</span> <span class="o">-</span> <span class="n">configure</span> <span class="n">the</span> <span class="n">pin</span> <span class="k">for</span> <span class="n">output</span><span class="p">,</span> <span class="k">with</span> <span class="nb">open</span><span class="o">-</span><span class="n">drain</span> <span class="n">control</span><span class="p">;</span>
+<span class="n">Pin</span><span class="o">.</span><span class="n">ALT</span>    <span class="o">-</span> <span class="n">configure</span> <span class="n">the</span> <span class="n">pin</span> <span class="k">for</span> <span class="n">alternate</span> <span class="n">function</span><span class="p">,</span> <span class="nb">input</span> <span class="ow">or</span> <span class="n">output</span><span class="p">;</span>
+<span class="n">Pin</span><span class="o">.</span><span class="n">AF_PP</span>  <span class="o">-</span> <span class="n">configure</span> <span class="n">the</span> <span class="n">pin</span> <span class="k">for</span> <span class="n">alternate</span> <span class="n">function</span><span class="p">,</span> <span class="n">push</span><span class="o">-</span><span class="n">pull</span><span class="p">;</span>
+<span class="n">Pin</span><span class="o">.</span><span class="n">AF_OD</span>  <span class="o">-</span> <span class="n">configure</span> <span class="n">the</span> <span class="n">pin</span> <span class="k">for</span> <span class="n">alternate</span> <span class="n">function</span><span class="p">,</span> <span class="nb">open</span><span class="o">-</span><span class="n">drain</span><span class="p">;</span>
+<span class="n">Pin</span><span class="o">.</span><span class="n">ANALOG</span> <span class="o">-</span> <span class="n">configure</span> <span class="n">the</span> <span class="n">pin</span> <span class="k">for</span> <span class="n">analog</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Konštanty pre nastavenie typu výstupu</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Pin</span><span class="o">.</span><span class="n">PULL_NONE</span> <span class="o">-</span> <span class="n">no</span> <span class="n">pull</span> <span class="n">up</span> <span class="ow">or</span> <span class="n">down</span> <span class="n">resistors</span><span class="p">;</span>
+<span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span>   <span class="o">-</span> <span class="n">enable</span> <span class="n">the</span> <span class="n">pull</span><span class="o">-</span><span class="n">up</span> <span class="n">resistor</span><span class="p">;</span>
+<span class="n">Pin</span><span class="o">.</span><span class="n">PULL_DOWN</span> <span class="o">-</span> <span class="n">enable</span> <span class="n">the</span> <span class="n">pull</span><span class="o">-</span><span class="n">down</span> <span class="n">resistor</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Funkcie pre riadenie portu</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Pin</span><span class="o">.</span><span class="n">value</span><span class="p">([</span><span class="n">value</span><span class="p">])</span>  <span class="n">Get</span> <span class="ow">or</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">digital</span> <span class="n">logic</span> <span class="n">level</span> <span class="n">of</span> <span class="n">the</span> <span class="n">pin</span><span class="p">:</span>
+<span class="n">Pin</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>       <span class="n">Return</span> <span class="n">a</span> <span class="n">string</span> <span class="n">describing</span> <span class="n">the</span> <span class="n">pin</span> <span class="nb">object</span><span class="o">.</span>
+<span class="n">Pin</span><span class="o">.</span><span class="n">af</span><span class="p">()</span>            <span class="n">Returns</span> <span class="n">the</span> <span class="n">currently</span> <span class="n">configured</span> <span class="n">alternate</span><span class="o">-</span><span class="n">function</span> <span class="n">of</span> <span class="n">the</span> <span class="n">pin</span>
+<span class="n">Pin</span><span class="o">.</span><span class="n">af_list</span><span class="p">()</span>       <span class="n">Returns</span> <span class="n">an</span> <span class="n">array</span> <span class="n">of</span> <span class="n">alternate</span> <span class="n">functions</span> <span class="n">available</span> <span class="k">for</span> <span class="n">this</span> <span class="n">pin</span><span class="o">.</span>
+
+<span class="n">Pin</span><span class="o">.</span><span class="n">gpio</span><span class="p">()</span>          <span class="n">Returns</span> <span class="n">the</span> <span class="n">base</span> <span class="n">address</span> <span class="n">of</span> <span class="n">the</span> <span class="n">GPIO</span> <span class="n">block</span> <span class="n">associated</span> <span class="k">with</span> <span class="n">this</span> <span class="n">pin</span><span class="o">.</span>
+<span class="n">Pin</span><span class="o">.</span><span class="n">mode</span><span class="p">()</span>          <span class="n">Returns</span> <span class="n">the</span> <span class="n">currently</span> <span class="n">configured</span> <span class="n">mode</span> <span class="n">of</span> <span class="n">the</span> <span class="n">pin</span><span class="o">.</span>
+<span class="n">Pin</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>          <span class="n">Get</span> <span class="n">the</span> <span class="n">pin</span> <span class="n">name</span><span class="o">.</span>
+<span class="n">Pin</span><span class="o">.</span><span class="n">names</span><span class="p">()</span>         <span class="n">Returns</span> <span class="n">the</span> <span class="n">cpu</span> <span class="ow">and</span> <span class="n">board</span> <span class="n">names</span> <span class="k">for</span> <span class="n">this</span> <span class="n">pin</span><span class="o">.</span>
+<span class="n">Pin</span><span class="o">.</span><span class="n">pin</span><span class="p">()</span>           <span class="n">Get</span> <span class="n">the</span> <span class="n">pin</span> <span class="n">number</span><span class="o">.</span>
+<span class="n">Pin</span><span class="o">.</span><span class="n">port</span><span class="p">()</span>          <span class="n">Get</span> <span class="n">the</span> <span class="n">pin</span> <span class="n">port</span><span class="o">.</span>
+<span class="n">Pin</span><span class="o">.</span><span class="n">pull</span><span class="p">()</span>          <span class="n">Returns</span> <span class="n">the</span> <span class="n">currently</span> <span class="n">configured</span> <span class="n">pull</span> <span class="n">of</span> <span class="n">the</span> <span class="n">pin</span>
+</pre></div>
+</div>
+</section>
+<section id="priklady">
+<h2><font color='teal'> Príklady </font><a class="headerlink" href="#priklady" title="Link to this heading">#</a></h2>
+<p>Preddefinované periférie na doske NUCLEO64 s procesorom STM32L476RG</p>
+<figure class="align-default" id="gp-04">
+<a class="reference internal image-reference" href="_images/gp_004.png"><img alt="_images/gp_004.png" src="_images/gp_004.png" style="width: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Obr. 4 </span><span class="caption-text">Zapojenie tlačítka a LED diódy na kite <em>Nucleo-64</em></span><a class="headerlink" href="#gp-04" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>PC13 - Button           nemapuje sa do Arduina
+PA5  - Green LED        (STM32) PA5 -&gt; D13 (ARD)
+</pre></div>
+</div>
+<p><strong>Tlačítko</strong></p>
+<p>Nestlačené tlačítko má hodnotu 1, stlačené 0.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyb</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="s1">&#39;PC13&#39;</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>
+
+<span class="c1"># tlac hodnoty tlacitka 0/1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">value</span><span class="p">())</span>  
+
+<span class="c1"># definovanie prerusenia a callback funkcie</span>
+<span class="n">p</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span><span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">value</span><span class="p">()))</span>
+</pre></div>
+</div>
+<p><strong>Green LED</strong></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyb</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="s1">&#39;D13&#39;</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span> 
+</pre></div>
+</div>
+</section>
+<section id="ulohy">
+<h2><font color='teal'> Úlohy </font><a class="headerlink" href="#ulohy" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="0100_mcp_instalacia.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><font color='navy'> Inštalácia </font></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="0102_mcp_moduly_py.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><font color='navy'> <b> Moduly a knižnice </b></font></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kniznica-pyb-pin"><font color="teal">  Knižnica pyb.Pin </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trieda-pin"><font color="teal">  Trieda Pin </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#priklady"><font color="teal"> Príklady </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ulohy"><font color="teal"> Úlohy </font></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By pf
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, pf.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
